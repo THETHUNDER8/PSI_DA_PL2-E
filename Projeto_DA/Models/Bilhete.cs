@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using iTextSharp.text.pdf;//bibliotecas para dar export em pdf,txt etc...
+using iTextSharp.text;
+using Image = iTextSharp.text.Image;
+using Font = iTextSharp.text.Font;
 
 namespace Projeto_DA.Models
 {
