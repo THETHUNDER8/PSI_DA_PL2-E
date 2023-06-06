@@ -1,24 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing.Printing;
-using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Linq;
-using iTextSharp.text.pdf;//bibliotecas para dar export em pdf,txt etc...
 using iTextSharp.text;
-using Image = iTextSharp.text.Image;
-using Font = iTextSharp.text.Font;
+using iTextSharp.text.pdf;//bibliotecas para dar export em pdf,txt etc...
+using System.IO;
+
 
 namespace Projeto_DA.Models
 {
     public class Bilhete
     {
         public int Id { get; set; }
-        int lugar;
-        bool estado;
+        public int lugar { get; set; }
+        public bool estado { get; set; }
+
+ 
+        public Bilhete(int id, int Lugar, bool Estado)
+        {
+            Id = id;
+            lugar = Lugar;
+            estado = Estado;
+        }
 
         public void exportar()
         {
@@ -47,5 +51,6 @@ namespace Projeto_DA.Models
 
             doc.Close();
         }
+
     }
 }
