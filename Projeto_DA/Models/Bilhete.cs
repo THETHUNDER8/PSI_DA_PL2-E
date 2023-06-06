@@ -9,43 +9,53 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using iTextSharp.text.pdf;//bibliotecas para dar export em pdf,txt etc...
 using iTextSharp.text;
-using Image = iTextSharp.text.Image;
-using Font = iTextSharp.text.Font;
+using System.Windows.Documents;
+using Org.BouncyCastle.Crypto;
 
 namespace Projeto_DA.Models
 {
     internal class Bilhete
     {
         public int Id { get; set; }
-        int lugar;
-        bool estado;
+        public int lugar { get; set; }
+        public bool estado { get; set; }
 
-        public void exportar()
+ 
+        public Bilhete(int id, int Lugar, bool Estado)
         {
-
-            var date = DateTime.Now;
-            string date_str = "Data: " + date.ToString();
-            string filmevisto = "Filme: ";
-            Image imagem = Image.GetInstance("img/img.jpg");//diretório da imagem para o ticket
-            imagem.SetAbsolutePosition(10, 10);
-
-            var doc = new Document(PageSize.A6);//Tamanho da página do ticket, escolhi A6 porque é um tamanho mais pequeno
-            PdfWriter.GetInstance(doc, new FileStream("D:/ticket.pdf", FileMode.Create));
-
-            doc.Open();
-
-            Console.WriteLine(date_str);
-            Paragraph titulo = new Paragraph("Bem vindo ao cinema!", new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD));
-            titulo.Alignment = Element.ALIGN_CENTER;
-
-            doc.Add(titulo);
-            doc.Add(new Paragraph(date_str));
-            doc.Add(new Paragraph(filmevisto));
-
-            doc.Add(imagem);
-
-
-            doc.Close();
+            Id = id;
+            lugar = Lugar;
+            estado = Estado;
         }
+    }
+
+
+
+    public void exportar()
+    {
+
+        var date = DateTime.Now;
+        string date_str = "Data: " + date.ToString();
+        string filmevisto = "Filme: ";
+        Image imagem = Image.GetInstance("img/img.jpg");//diretório da imagem para o ticket
+        imagem.SetAbsolutePosition(10, 10);
+
+        var doc = new Document(PageSize.A6);//Tamanho da página do ticket, escolhi A6 porque é um tamanho mais pequeno
+        PdfWriter.GetInstance(doc, new FileStream("D:/ticket.pdf", FileMode.Create));
+
+        doc.Open();
+
+        Console.WriteLine(date_str);
+        Paragraph titulo = new Paragraph("Bem vindo ao cinema!", new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD));
+        titulo.Alignment = Element.ALIGN_CENTER;
+
+        doc.Add(titulo);
+        doc.Add(new Paragraph(date_str));
+        doc.Add(new Paragraph(filmevisto));
+
+        doc.Add(imagem);
+
+
+        doc.Close();
     }
 }
