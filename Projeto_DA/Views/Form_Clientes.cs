@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Projeto_DA
+namespace Projeto_DA.Views
 {
-    public partial class Form_Principal : Form
+    public partial class Form_Clientes : Form
     {
-        public Form_Principal()
+        public Form_Clientes()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
-﻿namespace Projeto_DA
+﻿namespace Projeto_DA.Views
 {
-    partial class Form_Principal
+    partial class Form_Clientes
     {
         /// <summary>
         /// Required designer variable.
@@ -28,20 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // Form_Principal
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Form_Principal";
-            this.Text = " Formulário Principal";
-            this.ResumeLayout(false);
-
+            this.Text = "Form_Clientes";
         }
 
         #endregion
     }
 }
-
