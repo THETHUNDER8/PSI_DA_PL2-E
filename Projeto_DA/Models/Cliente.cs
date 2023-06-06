@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Projeto_DA.Models
 {
-    internal class Cliente
+    public class Cliente : Pessoa
     {
+        public int numFiscal;
+
+        
     }
 }

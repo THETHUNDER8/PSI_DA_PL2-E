@@ -8,7 +8,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Projeto_DA.Models
 {
-    internal class CinemaContext
+    public class CinemaContext : DbContext
     {
         public DbSet<Cliente> Clientes { get; set; }
 
@@ -24,6 +24,6 @@ namespace Projeto_DA.Models
 
         public DbSet<Categoria> Categorias { get; set; }
 
-        //public CinemaContext() : base("DBConnString") { }
+        public CinemaContext() : base("DBConnString") { }
     }
 }

@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\Controller.cs" />
+    <Compile Include="Controllers\FormController.cs" />
     <Compile Include="Models\Bilhete.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Cinema.cs" />
@@ -98,6 +99,12 @@
     <Compile Include="Views\Form_Filmes.Designer.cs">
       <DependentUpon>Form_Filmes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Form_Funcionarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Form_Funcionarios.Designer.cs">
+      <DependentUpon>Form_Funcionarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Form_Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +119,21 @@
     <Compile Include="Views\Form_Sessoes.Designer.cs">
       <DependentUpon>Form_Sessoes.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\Form_Atendimento.resx">
+      <DependentUpon>Form_Atendimento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Form_Cinema.resx">
+      <DependentUpon>Form_Cinema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Form_Clientes.resx">
+      <DependentUpon>Form_Clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Form_Filmes.resx">
+      <DependentUpon>Form_Filmes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Form_Funcionarios.resx">
+      <DependentUpon>Form_Funcionarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Form_Principal.resx">
       <DependentUpon>Form_Principal.cs</DependentUpon>
     </EmbeddedResource>
@@ -124,6 +146,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\Form_Sessoes.resx">
+      <DependentUpon>Form_Sessoes.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

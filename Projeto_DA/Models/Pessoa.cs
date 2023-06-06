@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Projeto_DA.Models
 {
-    internal class Pessoa
+    public class Pessoa
     {
-
+        public int id;
+        public string nome;
+        public string morada;
+        
     }
 }

@@ -14,7 +14,7 @@ using Font = iTextSharp.text.Font;
 
 namespace Projeto_DA.Models
 {
-    internal class Bilhete
+    public class Bilhete
     {
         public int Id { get; set; }
         int lugar;

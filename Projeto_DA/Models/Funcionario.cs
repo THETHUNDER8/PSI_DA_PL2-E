@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Projeto_DA.Models
 {
-    internal class Funcionario
+    public class Funcionario : Pessoa
     {
+
+        public string funcao;
+        public float slaraio;
     }
 }
