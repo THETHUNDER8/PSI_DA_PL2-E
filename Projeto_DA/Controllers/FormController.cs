@@ -17,5 +17,13 @@ namespace Projeto_DA.Controllers
             novoForm.ShowDialog();
 
         }
+
+        public static void ClearInputFields(params TextBox[] textBoxes)
+        {
+            foreach (TextBox textBox in textBoxes)
+            {
+                textBox.Text = string.Empty;
+            }
+        }
     }
 }

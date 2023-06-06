@@ -38,6 +38,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tb_numFiscal = new System.Windows.Forms.TextBox();
+            this.btn_editar_cliente = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_back
@@ -52,7 +53,7 @@
             // 
             // btn_criarCliente
             // 
-            this.btn_criarCliente.Location = new System.Drawing.Point(40, 226);
+            this.btn_criarCliente.Location = new System.Drawing.Point(45, 188);
             this.btn_criarCliente.Name = "btn_criarCliente";
             this.btn_criarCliente.Size = new System.Drawing.Size(118, 55);
             this.btn_criarCliente.TabIndex = 2;
@@ -67,6 +68,7 @@
             this.listb_clientes.Name = "listb_clientes";
             this.listb_clientes.Size = new System.Drawing.Size(272, 238);
             this.listb_clientes.TabIndex = 3;
+            this.listb_clientes.SelectedIndexChanged += new System.EventHandler(this.listb_clientes_SelectedIndexChanged);
             // 
             // btn_eleminarCliente
             // 
@@ -76,60 +78,78 @@
             this.btn_eleminarCliente.TabIndex = 4;
             this.btn_eleminarCliente.Text = "Eliminar Cliente";
             this.btn_eleminarCliente.UseVisualStyleBackColor = true;
+            this.btn_eleminarCliente.Click += new System.EventHandler(this.btn_eleminarCliente_Click);
             // 
             // tb_nome
             // 
-            this.tb_nome.Location = new System.Drawing.Point(40, 104);
+            this.tb_nome.Location = new System.Drawing.Point(45, 66);
             this.tb_nome.Name = "tb_nome";
-            this.tb_nome.Size = new System.Drawing.Size(215, 20);
+            this.tb_nome.Size = new System.Drawing.Size(270, 20);
             this.tb_nome.TabIndex = 5;
+            
             // 
             // tb_morada
             // 
-            this.tb_morada.Location = new System.Drawing.Point(40, 143);
+            this.tb_morada.Location = new System.Drawing.Point(45, 105);
             this.tb_morada.Name = "tb_morada";
-            this.tb_morada.Size = new System.Drawing.Size(215, 20);
+            this.tb_morada.Size = new System.Drawing.Size(270, 20);
             this.tb_morada.TabIndex = 6;
+            
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 88);
+            this.label1.Location = new System.Drawing.Point(42, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 8;
             this.label1.Text = "Nome:";
+            
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(37, 127);
+            this.label2.Location = new System.Drawing.Point(42, 89);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 9;
             this.label2.Text = "Morada:";
+            
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(37, 166);
+            this.label4.Location = new System.Drawing.Point(42, 128);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 13);
             this.label4.TabIndex = 12;
             this.label4.Text = "Número Fiscal:";
+            
             // 
             // tb_numFiscal
             // 
-            this.tb_numFiscal.Location = new System.Drawing.Point(40, 182);
+            this.tb_numFiscal.Location = new System.Drawing.Point(45, 144);
             this.tb_numFiscal.Name = "tb_numFiscal";
-            this.tb_numFiscal.Size = new System.Drawing.Size(215, 20);
+            this.tb_numFiscal.Size = new System.Drawing.Size(270, 20);
             this.tb_numFiscal.TabIndex = 11;
+            
+            // 
+            // btn_editar_cliente
+            // 
+            this.btn_editar_cliente.Location = new System.Drawing.Point(197, 188);
+            this.btn_editar_cliente.Name = "btn_editar_cliente";
+            this.btn_editar_cliente.Size = new System.Drawing.Size(118, 55);
+            this.btn_editar_cliente.TabIndex = 13;
+            this.btn_editar_cliente.Text = "Editar Cliente";
+            this.btn_editar_cliente.UseVisualStyleBackColor = true;
+            this.btn_editar_cliente.Click += new System.EventHandler(this.btn_editar_cliente_Click);
             // 
             // Form_Clientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_editar_cliente);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tb_numFiscal);
             this.Controls.Add(this.label2);
@@ -159,5 +179,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tb_numFiscal;
+        private System.Windows.Forms.Button btn_editar_cliente;
     }
 }

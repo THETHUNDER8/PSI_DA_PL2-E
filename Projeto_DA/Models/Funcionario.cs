@@ -8,8 +8,18 @@ namespace Projeto_DA.Models
 {
     public class Funcionario : Pessoa
     {
+        public int Id { get; set; }
+        public string funcao { get; set; }
+        public float salario { get; set; }
 
-        public string funcao;
-        public float slaraio;
+        public Funcionario()
+        {
+            
+        }
+
+        public override string ToString()
+        {
+            return nome + "(Morada-" + morada + ")" + "(Funcao-" + funcao + ")" + "(Salario-" + salario + "€)";
+        }
     }
 }

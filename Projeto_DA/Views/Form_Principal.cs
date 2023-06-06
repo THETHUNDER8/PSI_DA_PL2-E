@@ -1,4 +1,5 @@
 ﻿using Projeto_DA.Controllers;
+using Projeto_DA.Models;
 using Projeto_DA.Views;
 using System;
 using System.Collections.Generic;
@@ -49,6 +50,26 @@ namespace Projeto_DA
         {
             Form_Funcionarios Form_Funcionarios = new Form_Funcionarios();
             FormController.trocaForm(this, Form_Funcionarios);
+        }
+
+        private void cb_funcionario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //todo ficar com o o funionario selecionado e usar-lo quando chamado
+        }
+
+        private void Form_Principal_Load(object sender, EventArgs e)
+        {
+            LoadFuncionarios();
+        }
+
+        private void LoadFuncionarios()
+        {
+            cb_funcionario.DataSource = null;
+            using (var context = new CinemaContext())
+            {
+                cb_funcionario.DataSource = context.Funcionarios.ToList();
+
+            }
         }
     }
 }

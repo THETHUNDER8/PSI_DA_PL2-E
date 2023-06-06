@@ -1,4 +1,5 @@
 ﻿using Projeto_DA.Controllers;
+using Projeto_DA.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,97 @@ namespace Projeto_DA.Views
         {
             Form_Principal Form_Principal = new Form_Principal();
             FormController.trocaForm(this, Form_Principal);
+        }
+
+        private void btn_criarFuncionario_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(tb_nome.Text) || string.IsNullOrEmpty(tb_morada.Text) || string.IsNullOrEmpty(tb_funcao.Text) || string.IsNullOrEmpty(tb_funcao.Text))
+            {
+                MessageBox.Show("Preencha todos os campos!");
+                return;
+            }
+
+            try
+            {
+
+                Funcionario newFuncionario = new Funcionario();
+                newFuncionario.nome = tb_nome.Text;
+                newFuncionario.morada = tb_morada.Text;
+                newFuncionario.funcao = tb_funcao.Text;
+                newFuncionario.salario = float.Parse(tb_salario.Text);
+
+                using (var context = new CinemaContext())
+                {
+                    context.Funcionarios.Add(newFuncionario);
+                    context.SaveChanges();
+                }
+
+                listb_Funcionario.Items.Add(newFuncionario);
+                FormController.ClearInputFields(tb_nome, tb_morada, tb_funcao, tb_salario);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro ao criar o cliente: " + ex.Message);
+            }
+        }
+
+        private void btn_editarFuncionario_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(tb_nome.Text) || string.IsNullOrEmpty(tb_morada.Text) || string.IsNullOrEmpty(tb_funcao.Text) || string.IsNullOrEmpty(tb_funcao.Text))
+            {
+                MessageBox.Show("Preencha todos os campos!");
+                return;
+            }
+
+            try
+            {
+                Funcionario selectedFuncionario = (Funcionario)listb_Funcionario.SelectedItem;
+                using (var context = new CinemaContext())
+                {
+                    // Retrieve the selected item from the database for updating
+                    Funcionario FuncionarioToUpdate = context.Funcionarios.Find(selectedFuncionario.Id);//erro nao vai buscar ID retorna null:
+                    // Update the properties with the new values
+                    FuncionarioToUpdate.nome = tb_nome.Text;
+                    FuncionarioToUpdate.morada = tb_morada.Text;
+                    FuncionarioToUpdate.funcao = tb_funcao.Text;
+                    FuncionarioToUpdate.salario = float.Parse(tb_salario.Text);
+
+                    context.SaveChanges();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro ao criar o cliente: " + ex.Message);
+            }
+        }
+
+        private void btn_eleminarFuncionario_Click(object sender, EventArgs e)
+        {
+            if (listb_Funcionario.SelectedItem == null)
+            {
+                return;
+            }
+
+            listb_Funcionario.Items.RemoveAt(listb_Funcionario.SelectedIndex);
+        }
+
+        private void listb_Funcionario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listb_Funcionario.SelectedItem == null)
+            {
+                return;
+            }
+            else
+            {
+                Funcionario selectedFuncionario = (Funcionario)listb_Funcionario.SelectedItem;
+                //coloca os valores textboxes
+                tb_nome.Text = selectedFuncionario.nome;
+                tb_morada.Text = selectedFuncionario.morada;
+                tb_funcao.Text = selectedFuncionario.funcao;
+                tb_salario.Text = selectedFuncionario.salario.ToString();
+
+            }
         }
     }
 }

@@ -8,9 +8,9 @@ namespace Projeto_DA.Models
 {
     public class Pessoa
     {
-        public int id;
-        public string nome;
-        public string morada;
-        
+
+        public string nome{ get; set; }
+        public string morada{ get; set; }
+
     }
 }

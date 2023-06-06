@@ -8,5 +8,8 @@ namespace Projeto_DA.Models
 {
     public class Sessao
     {
+        public int ID { get; set; }
+        public DateTime DataHora { get; set; }
+        public float preco { get; set; }
     }
 }

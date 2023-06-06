@@ -36,6 +36,7 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cb_funcionario = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -82,11 +83,11 @@
             // 
             // btn_Funcionaios
             // 
-            this.btn_Funcionaios.Location = new System.Drawing.Point(12, 354);
+            this.btn_Funcionaios.Location = new System.Drawing.Point(6, 253);
             this.btn_Funcionaios.Name = "btn_Funcionaios";
             this.btn_Funcionaios.Size = new System.Drawing.Size(251, 59);
             this.btn_Funcionaios.TabIndex = 4;
-            this.btn_Funcionaios.Text = "Alterar Funcionários";
+            this.btn_Funcionaios.Text = "Funcionários";
             this.btn_Funcionaios.UseVisualStyleBackColor = true;
             this.btn_Funcionaios.Click += new System.EventHandler(this.btn_Funcionaios_Click);
             // 
@@ -100,13 +101,15 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cb_funcionario);
             this.groupBox1.Controls.Add(this.btn_clientes);
             this.groupBox1.Controls.Add(this.btn_sessoes);
+            this.groupBox1.Controls.Add(this.btn_Funcionaios);
             this.groupBox1.Controls.Add(this.btn_filmes);
             this.groupBox1.Controls.Add(this.bnt_cinema);
             this.groupBox1.Location = new System.Drawing.Point(6, 28);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(285, 308);
+            this.groupBox1.Size = new System.Drawing.Size(285, 385);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Menu";
@@ -121,6 +124,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Sessões para o dia de hoje ";
             // 
+            // cb_funcionario
+            // 
+            this.cb_funcionario.FormattingEnabled = true;
+            this.cb_funcionario.Location = new System.Drawing.Point(6, 339);
+            this.cb_funcionario.Name = "cb_funcionario";
+            this.cb_funcionario.Size = new System.Drawing.Size(121, 21);
+            this.cb_funcionario.TabIndex = 5;
+            this.cb_funcionario.SelectedIndexChanged += new System.EventHandler(this.cb_funcionario_SelectedIndexChanged);
+            // 
             // Form_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -128,9 +140,9 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btn_Funcionaios);
             this.Name = "Form_Principal";
             this.Text = " Formulário Principal";
+            this.Load += new System.EventHandler(this.Form_Principal_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -147,6 +159,7 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ComboBox cb_funcionario;
     }
 }
 

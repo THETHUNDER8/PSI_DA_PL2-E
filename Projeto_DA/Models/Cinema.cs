@@ -8,5 +8,9 @@ namespace Projeto_DA.Models
 {
     public class Cinema
     {
+        public int Id { get; set; }
+        public string nome { get; set; }
+        public string morada { get; set; }
+        public string email { get; set; }
     }
 }
