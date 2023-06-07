@@ -176,6 +176,8 @@
             this.Controls.Add(this.btn_back);
             this.Name = "Form_Funcionarios";
             this.Text = "Form_Funcionarios";
+            this.Load += new System.EventHandler(this.Form_Funcionarios_Load);
+            this.Click += new System.EventHandler(this.Form_Funcionarios_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
 

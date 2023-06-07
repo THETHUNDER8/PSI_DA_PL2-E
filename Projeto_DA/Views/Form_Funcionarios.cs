@@ -48,12 +48,12 @@ namespace Projeto_DA.Views
                     context.SaveChanges();
                 }
 
-                listb_Funcionario.Items.Add(newFuncionario);
                 FormController.ClearInputFields(tb_nome, tb_morada, tb_funcao, tb_salario);
+                LoadFuncionarios();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocorreu um erro ao criar o cliente: " + ex.Message);
+                MessageBox.Show("Ocorreu um erro ao criar o Funcionario: " + ex.Message);
             }
         }
 
@@ -64,15 +64,18 @@ namespace Projeto_DA.Views
                 MessageBox.Show("Preencha todos os campos!");
                 return;
             }
-
+            if (listb_Funcionario.SelectedItem == null)
+            {
+                return;
+            }
             try
             {
                 Funcionario selectedFuncionario = (Funcionario)listb_Funcionario.SelectedItem;
                 using (var context = new CinemaContext())
                 {
-                    // Retrieve the selected item from the database for updating
-                    Funcionario FuncionarioToUpdate = context.Funcionarios.Find(selectedFuncionario.Id);//erro nao vai buscar ID retorna null:
-                    // Update the properties with the new values
+                    // Vai buscar á db o item selecionado
+                    Funcionario FuncionarioToUpdate = context.Funcionarios.Find(selectedFuncionario.Id);
+                    // Update 
                     FuncionarioToUpdate.nome = tb_nome.Text;
                     FuncionarioToUpdate.morada = tb_morada.Text;
                     FuncionarioToUpdate.funcao = tb_funcao.Text;
@@ -80,11 +83,12 @@ namespace Projeto_DA.Views
 
                     context.SaveChanges();
                 }
+                LoadFuncionarios();
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocorreu um erro ao criar o cliente: " + ex.Message);
+                MessageBox.Show("Ocorreu um erro ao editar o Funcionario: " + ex.Message);
             }
         }
 
@@ -94,7 +98,7 @@ namespace Projeto_DA.Views
             {
                 return;
             }
-
+            //todo remove da database
             listb_Funcionario.Items.RemoveAt(listb_Funcionario.SelectedIndex);
         }
 
@@ -114,6 +118,28 @@ namespace Projeto_DA.Views
                 tb_salario.Text = selectedFuncionario.salario.ToString();
 
             }
+        }
+
+        private void Form_Funcionarios_Load(object sender, EventArgs e)
+        {
+            LoadFuncionarios();
+            listb_Funcionario.SelectedItem = null;
+            FormController.ClearInputFields(tb_nome, tb_morada, tb_funcao, tb_salario);
+        }
+
+        private void LoadFuncionarios()
+        {
+            listb_Funcionario.DataSource = null;
+            using (var context = new CinemaContext())
+            {
+                listb_Funcionario.DataSource = context.Funcionarios.ToList();
+            }
+        }
+
+        private void Form_Funcionarios_Click(object sender, EventArgs e)
+        {
+            listb_Funcionario.ClearSelected();
+            FormController.ClearInputFields(tb_nome, tb_morada, tb_funcao, tb_salario);
         }
     }
 }

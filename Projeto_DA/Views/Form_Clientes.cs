@@ -48,8 +48,8 @@ namespace Projeto_DA.Views
                     context.SaveChanges();
                 }
 
-                listb_clientes.Items.Add(newCliente);
                 FormController.ClearInputFields(tb_nome, tb_morada, tb_numFiscal);
+                LoadClientes();
             }
             catch (Exception ex)
             {
@@ -62,7 +62,7 @@ namespace Projeto_DA.Views
             {
                 return;
             }
-
+            //todo remove da database
             listb_clientes.Items.RemoveAt(listb_clientes.SelectedIndex);
 
         }
@@ -74,26 +74,31 @@ namespace Projeto_DA.Views
                 MessageBox.Show("Preencha todos os campos!");
                 return;
             }
-
+            if (listb_clientes.SelectedItem == null)
+            {
+                return;
+            }
             try
             {
                 Cliente selectedCliente = (Cliente)listb_clientes.SelectedItem;
                 using (var context = new CinemaContext())
                 {
-                    // Retrieve the selected item from the database for updating
-                    Cliente clienteToUpdate = context.Clientes.Find(selectedCliente.Id);//erro nao vai buscar ID retorna null:
-                    // Update the properties with the new values
+                    // Vai buscar á db o item selecionado
+                    Cliente clienteToUpdate = context.Clientes.Find(selectedCliente.Id);
+                    // Update 
                     clienteToUpdate.nome = tb_nome.Text;
                     clienteToUpdate.morada = tb_morada.Text;
                     clienteToUpdate.numFiscal = tb_numFiscal.Text;
 
                     context.SaveChanges();
                 }
+                FormController.ClearInputFields(tb_nome, tb_morada, tb_numFiscal);
+                LoadClientes();
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocorreu um erro ao criar o cliente: " + ex.Message);
+                MessageBox.Show("Ocorreu um erro ao editar o cliente: " + ex.Message);
             }
         }
 
@@ -114,5 +119,26 @@ namespace Projeto_DA.Views
             }
         }
 
+        private void Form_Clientes_Load(object sender, EventArgs e)
+        {
+            LoadClientes();
+            listb_clientes.SelectedItem = null;
+            FormController.ClearInputFields(tb_nome, tb_morada, tb_numFiscal);
+        }
+
+        private void LoadClientes()
+        {
+            listb_clientes.DataSource = null;
+            using (var context = new CinemaContext())
+            {
+                listb_clientes.DataSource = context.Clientes.ToList();
+            }
+        }
+
+        private void Form_Clientes_Click(object sender, EventArgs e)
+        {
+            listb_clientes.ClearSelected();
+            FormController.ClearInputFields(tb_nome, tb_morada, tb_numFiscal);
+        }
     }
 }

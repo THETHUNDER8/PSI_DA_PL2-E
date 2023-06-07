@@ -54,11 +54,21 @@ namespace Projeto_DA
 
         private void cb_funcionario_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //todo ficar com o o funionario selecionado e usar-lo quando chamado
+            //todo ficar com o o funionario selecionado e usar-lo quando chamado nao é selected index changerd mas sim selected index
         }
 
         private void Form_Principal_Load(object sender, EventArgs e)
         {
+            using (var context = new CinemaContext())
+            {
+                int cinemaCount = context.Cinema.Count();
+                if (cinemaCount == 0)
+                {
+                    Form_DefinicoesCinema formDefinicoesCinema = new Form_DefinicoesCinema();
+                    FormController.trocaForm(this, formDefinicoesCinema);
+                }
+            }
+
             LoadFuncionarios();
         }
 
@@ -68,7 +78,7 @@ namespace Projeto_DA
             using (var context = new CinemaContext())
             {
                 cb_funcionario.DataSource = context.Funcionarios.ToList();
-
+                cb_funcionario.DisplayMember = "nome";
             }
         }
     }

@@ -13,7 +13,7 @@ namespace Projeto_DA.Controllers
         {
             //esconde form atual
             FormAtual.Hide();
-            //Mostra form
+            //Mostra form destino
             novoForm.ShowDialog();
 
         }
@@ -25,5 +25,7 @@ namespace Projeto_DA.Controllers
                 textBox.Text = string.Empty;
             }
         }
+
+
     }
 }

@@ -13,5 +13,14 @@ namespace Projeto_DA.Models
         public int colunas { get; set; }
         public int filas { get; set; }
 
+        public Sala() 
+        {
+        
+        
+        }
+        public override string ToString()
+        {
+            return nome + "(Filas-" + filas + ")" + "(Colunas-" + colunas + ")";
+        }
     }
 }

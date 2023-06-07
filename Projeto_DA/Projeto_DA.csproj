@@ -93,6 +93,12 @@
     <Compile Include="Views\Form_Clientes.Designer.cs">
       <DependentUpon>Form_Clientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Form_DefinicoesCinema.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Form_DefinicoesCinema.Designer.cs">
+      <DependentUpon>Form_DefinicoesCinema.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Form_Filmes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Form_Clientes.resx">
       <DependentUpon>Form_Clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Form_DefinicoesCinema.resx">
+      <DependentUpon>Form_DefinicoesCinema.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Form_Filmes.resx">
       <DependentUpon>Form_Filmes.cs</DependentUpon>

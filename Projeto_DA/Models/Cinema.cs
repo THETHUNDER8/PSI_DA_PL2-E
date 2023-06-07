@@ -12,5 +12,12 @@ namespace Projeto_DA.Models
         public string nome { get; set; }
         public string morada { get; set; }
         public string email { get; set; }
+        public int maxSalas { get; set; }
+
+        public Cinema() 
+        {
+        
+        
+        }
     }
 }

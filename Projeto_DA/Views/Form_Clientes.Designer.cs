@@ -86,7 +86,6 @@
             this.tb_nome.Name = "tb_nome";
             this.tb_nome.Size = new System.Drawing.Size(270, 20);
             this.tb_nome.TabIndex = 5;
-            
             // 
             // tb_morada
             // 
@@ -94,7 +93,6 @@
             this.tb_morada.Name = "tb_morada";
             this.tb_morada.Size = new System.Drawing.Size(270, 20);
             this.tb_morada.TabIndex = 6;
-            
             // 
             // label1
             // 
@@ -104,7 +102,6 @@
             this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 8;
             this.label1.Text = "Nome:";
-            
             // 
             // label2
             // 
@@ -114,7 +111,6 @@
             this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 9;
             this.label2.Text = "Morada:";
-            
             // 
             // label4
             // 
@@ -124,7 +120,6 @@
             this.label4.Size = new System.Drawing.Size(77, 13);
             this.label4.TabIndex = 12;
             this.label4.Text = "Número Fiscal:";
-            
             // 
             // tb_numFiscal
             // 
@@ -132,7 +127,6 @@
             this.tb_numFiscal.Name = "tb_numFiscal";
             this.tb_numFiscal.Size = new System.Drawing.Size(270, 20);
             this.tb_numFiscal.TabIndex = 11;
-            
             // 
             // btn_editar_cliente
             // 
@@ -162,6 +156,8 @@
             this.Controls.Add(this.btn_back);
             this.Name = "Form_Clientes";
             this.Text = "Form_Clientes";
+            this.Load += new System.EventHandler(this.Form_Clientes_Load);
+            this.Click += new System.EventHandler(this.Form_Clientes_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
 
