@@ -8,8 +8,17 @@ namespace Projeto_DA.Models
 {
     public class Categoria
     {
+
         public int Id { get; set; }
         public string nome { get; set; }
         public string activa { get; set; }
+
+        public Categoria() 
+        {
+            
+        
+        }
+
+
     }
 }

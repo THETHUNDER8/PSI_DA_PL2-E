@@ -16,7 +16,7 @@ namespace Projeto_DA.Models
         public int lugar { get; set; }
         public bool estado { get; set; }
 
- 
+
         public Bilhete(int id, int Lugar, bool Estado)
         {
             Id = id;
@@ -24,17 +24,17 @@ namespace Projeto_DA.Models
             estado = Estado;
         }
 
-        public void exportar()
+        public static void exportar()
         {
 
             var date = DateTime.Now;
             string date_str = "Data: " + date.ToString();
             string filmevisto = "Filme: ";
-            Image imagem = Image.GetInstance("img/img.jpg");//diretório da imagem para o ticket
-            imagem.SetAbsolutePosition(10, 10);
+            //Image imagem = Image.GetInstance("img/img.jpg");//diretório da imagem para o ticket
+            //imagem.SetAbsolutePosition(10, 10);
 
             var doc = new Document(PageSize.A6);//Tamanho da página do ticket, escolhi A6 porque é um tamanho mais pequeno
-            PdfWriter.GetInstance(doc, new FileStream("D:/ticket.pdf", FileMode.Create));
+            PdfWriter.GetInstance(doc, new FileStream("C:\\Users\\Hugo Gonçalves\\Desktop\\New folderticket.pdf", FileMode.Create));
 
             doc.Open();
 
@@ -46,7 +46,7 @@ namespace Projeto_DA.Models
             doc.Add(new Paragraph(date_str));
             doc.Add(new Paragraph(filmevisto));
 
-            doc.Add(imagem);
+            //doc.Add(imagem);
 
 
             doc.Close();

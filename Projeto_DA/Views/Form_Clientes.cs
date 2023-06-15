@@ -62,8 +62,21 @@ namespace Projeto_DA.Views
             {
                 return;
             }
-            //todo remove da database
-            listb_clientes.Items.RemoveAt(listb_clientes.SelectedIndex);
+            Cliente ClienteToRemove = (Cliente)listb_clientes.SelectedItem;
+
+            using (var context = new CinemaContext())
+            {
+                // remove com o mesmo id selecionado da BD
+                Cliente Cliente = context.Clientes.SingleOrDefault(f => f.Id == ClienteToRemove.Id);
+
+                if (Cliente != null)
+                {
+                    context.Clientes.Remove(Cliente);
+                    context.SaveChanges();
+                }
+            }
+
+            LoadClientes();
 
         }
 

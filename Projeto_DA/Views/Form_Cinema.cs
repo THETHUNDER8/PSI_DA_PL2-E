@@ -138,9 +138,21 @@ namespace Projeto_DA.Views
             {
                 return;
             }
-            //todo remove da database
+            Sala SalaToRemove = (Sala)listb_salas.SelectedItem;
 
-            listb_salas.Items.RemoveAt(listb_salas.SelectedIndex);
+            using (var context = new CinemaContext())
+            {
+                // remove com o mesmo id selecionado da BD
+                Sala sala = context.Salas.SingleOrDefault(f => f.Id == SalaToRemove.Id);
+
+                if (sala != null)
+                {
+                    context.Salas.Remove(sala);
+                    context.SaveChanges();
+                }
+            }
+
+            LoadSalas();
         }
 
         private void listb_salas_SelectedIndexChanged(object sender, EventArgs e)

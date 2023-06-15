@@ -81,5 +81,10 @@ namespace Projeto_DA
                 cb_funcionario.DisplayMember = "nome";
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Bilhete.exportar();
+        }
     }
 }

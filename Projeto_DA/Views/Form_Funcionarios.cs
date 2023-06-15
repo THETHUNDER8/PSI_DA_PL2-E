@@ -98,8 +98,21 @@ namespace Projeto_DA.Views
             {
                 return;
             }
-            //todo remove da database
-            listb_Funcionario.Items.RemoveAt(listb_Funcionario.SelectedIndex);
+            Funcionario funcionarioToRemove = (Funcionario)listb_Funcionario.SelectedItem;
+
+            using (var context = new CinemaContext())
+            {
+                // remove com o mesmo id selecionado da BD
+                Funcionario funcionario = context.Funcionarios.SingleOrDefault(f => f.Id == funcionarioToRemove.Id);
+
+                if (funcionario != null)
+                {
+                    context.Funcionarios.Remove(funcionario);
+                    context.SaveChanges();
+                }
+            }
+
+            LoadFuncionarios();
         }
 
         private void listb_Funcionario_SelectedIndexChanged(object sender, EventArgs e)
