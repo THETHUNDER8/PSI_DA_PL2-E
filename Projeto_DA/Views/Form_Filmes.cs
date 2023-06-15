@@ -72,13 +72,12 @@ namespace Projeto_DA.Views
             try
             {
                 Filme newFilme = new Filme();
-                newFilme.nome = tb_nomeFilme.Text;
-                newFilme.duracao = Convert.ToInt32(tb_duracao.Text);
-                newFilme.categoria = (Categoria)cb_categorias.SelectedItem;// erro categoria vem null
-                newFilme.activoS = "Desativado";
-
                 using (var context = new CinemaContext())
                 {
+                    newFilme.nome = tb_nomeFilme.Text;
+                    newFilme.duracao = Convert.ToInt32(tb_duracao.Text);
+                    newFilme.Categoria = (Categoria)cb_categorias.SelectedItem;// erro categoria vem null
+                    newFilme.activoS = "Desativado";
                     context.Filmes.Add(newFilme);
                     context.SaveChanges();
                 }

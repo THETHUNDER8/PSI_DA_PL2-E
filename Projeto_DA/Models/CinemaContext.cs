@@ -23,6 +23,7 @@ namespace Projeto_DA.Models
         public DbSet<Sessao> Sessoes { get; set; }
 
         public DbSet<Categoria> Categorias { get; set; }
+
         public DbSet<Cinema> Cinema { get; set; }
 
         public CinemaContext() : base("DBConnString") { }

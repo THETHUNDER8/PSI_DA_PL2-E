@@ -11,5 +11,18 @@ namespace Projeto_DA.Models
         public int ID { get; set; }
         public DateTime DataHora { get; set; }
         public float preco { get; set; }
+        public Sala Sala { get; set; }
+        public Filme Filme { get; set; }
+
+        public Sessao()
+        {
+        
+        }
+
+        public override string ToString()
+        {
+
+            return "Data/hora-" + DataHora + "|Preço-" + preco  + "|Filme-" + Filme + "|Sala-" + Sala;
+        }
     }
 }
