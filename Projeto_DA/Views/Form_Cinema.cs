@@ -139,18 +139,26 @@ namespace Projeto_DA.Views
                 return;
             }
             Sala SalaToRemove = (Sala)listb_salas.SelectedItem;
-
-            using (var context = new CinemaContext())
+            try
             {
-                // remove com o mesmo id selecionado da BD
-                Sala sala = context.Salas.SingleOrDefault(f => f.Id == SalaToRemove.Id);
-
-                if (sala != null)
+                using (var context = new CinemaContext())
                 {
-                    context.Salas.Remove(sala);
-                    context.SaveChanges();
+                    // remove com o mesmo id selecionado da BD
+                    Sala sala = context.Salas.SingleOrDefault(f => f.Id == SalaToRemove.Id);
+
+                    if (sala != null)
+                    {
+                        context.Salas.Remove(sala);
+                        context.SaveChanges();
+                    }
+                }
+            }catch(Exception ex)
+            {
+                {
+                    MessageBox.Show("Ocorreu um erro ao eleminar a sala: " + ex.Message);
                 }
             }
+            
 
             LoadSalas();
         }

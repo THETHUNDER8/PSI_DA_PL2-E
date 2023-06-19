@@ -124,9 +124,9 @@
             // listb_Funcionario
             // 
             this.listb_Funcionario.FormattingEnabled = true;
-            this.listb_Funcionario.Location = new System.Drawing.Point(472, 70);
+            this.listb_Funcionario.Location = new System.Drawing.Point(362, 70);
             this.listb_Funcionario.Name = "listb_Funcionario";
-            this.listb_Funcionario.Size = new System.Drawing.Size(272, 238);
+            this.listb_Funcionario.Size = new System.Drawing.Size(382, 238);
             this.listb_Funcionario.TabIndex = 15;
             this.listb_Funcionario.SelectedIndexChanged += new System.EventHandler(this.listb_Funcionario_SelectedIndexChanged);
             // 

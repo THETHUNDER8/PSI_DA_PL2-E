@@ -59,7 +59,7 @@ namespace Projeto_DA
 
         private void cb_funcionario_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //todo ficar com o o funionario selecionado e usar-lo quando chamado nao é selected index changerd mas sim selected index
+           
         }
 
         private void Form_Principal_Load(object sender, EventArgs e)
@@ -75,6 +75,7 @@ namespace Projeto_DA
             }
 
             LoadFuncionarios();
+            LoadSessoesHoje();
         }
 
         private void LoadFuncionarios()
@@ -84,6 +85,29 @@ namespace Projeto_DA
             {
                 cb_funcionario.DataSource = context.Funcionarios.ToList();
                 cb_funcionario.DisplayMember = "nome";
+            }
+        }
+
+        private void LoadSessoesHoje()
+        {
+            listBox1.Items.Clear();
+
+            using (var context = new CinemaContext())
+            {
+                // data de hoje
+                DateTime today = DateTime.Today;
+
+                // busca sessoes
+                var sessions = context.Sessoes.ToList();
+
+                // filtra por dia de hoje
+                var filteredSessions = sessions.Where(s => s.DataHora.Date == today);
+
+                // adiciona as sessoess filtradas a listbox
+                foreach (var session in filteredSessions)
+                {
+                    listBox1.Items.Add(session);
+                }
             }
         }
 

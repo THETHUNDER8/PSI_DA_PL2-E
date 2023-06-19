@@ -64,9 +64,9 @@
             // listb_clientes
             // 
             this.listb_clientes.FormattingEnabled = true;
-            this.listb_clientes.Location = new System.Drawing.Point(457, 43);
+            this.listb_clientes.Location = new System.Drawing.Point(396, 43);
             this.listb_clientes.Name = "listb_clientes";
-            this.listb_clientes.Size = new System.Drawing.Size(272, 238);
+            this.listb_clientes.Size = new System.Drawing.Size(333, 238);
             this.listb_clientes.TabIndex = 3;
             this.listb_clientes.SelectedIndexChanged += new System.EventHandler(this.listb_clientes_SelectedIndexChanged);
             // 
