@@ -38,10 +38,10 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.listb_sessoes = new System.Windows.Forms.ListBox();
-            this.btn_criarSessao = new System.Windows.Forms.Button();
-            this.btn_eliminarSessao = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.btn_criarSessao = new System.Windows.Forms.Button();
+            this.listb_sessoes = new System.Windows.Forms.ListBox();
+            this.btn_eliminarSessao = new System.Windows.Forms.Button();
             this.btn_bilhetes = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -101,9 +101,11 @@
             // 
             // Picker_dataHora
             // 
+            this.Picker_dataHora.CustomFormat = "dd/MM/yyyy HH:mm";
+            this.Picker_dataHora.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.Picker_dataHora.Location = new System.Drawing.Point(42, 119);
             this.Picker_dataHora.Name = "Picker_dataHora";
-            this.Picker_dataHora.Size = new System.Drawing.Size(211, 20);
+            this.Picker_dataHora.Size = new System.Drawing.Size(170, 20);
             this.Picker_dataHora.TabIndex = 8;
             // 
             // groupBox1
@@ -143,13 +145,14 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Criar Sessão";
             // 
-            // listb_sessoes
+            // label3
             // 
-            this.listb_sessoes.FormattingEnabled = true;
-            this.listb_sessoes.Location = new System.Drawing.Point(12, 41);
-            this.listb_sessoes.Name = "listb_sessoes";
-            this.listb_sessoes.Size = new System.Drawing.Size(321, 329);
-            this.listb_sessoes.TabIndex = 4;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(148, 217);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(13, 13);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "€";
             // 
             // btn_criarSessao
             // 
@@ -161,6 +164,14 @@
             this.btn_criarSessao.UseVisualStyleBackColor = true;
             this.btn_criarSessao.Click += new System.EventHandler(this.btn_criarSessao_Click);
             // 
+            // listb_sessoes
+            // 
+            this.listb_sessoes.FormattingEnabled = true;
+            this.listb_sessoes.Location = new System.Drawing.Point(12, 41);
+            this.listb_sessoes.Name = "listb_sessoes";
+            this.listb_sessoes.Size = new System.Drawing.Size(321, 329);
+            this.listb_sessoes.TabIndex = 4;
+            // 
             // btn_eliminarSessao
             // 
             this.btn_eliminarSessao.Location = new System.Drawing.Point(12, 374);
@@ -170,15 +181,6 @@
             this.btn_eliminarSessao.Text = "Eliminar";
             this.btn_eliminarSessao.UseVisualStyleBackColor = true;
             this.btn_eliminarSessao.Click += new System.EventHandler(this.btn_eliminarSessao_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(148, 217);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(13, 13);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "€";
             // 
             // btn_bilhetes
             // 

@@ -39,11 +39,12 @@ namespace Projeto_DA.Views
             {
 
                 Cliente newCliente = new Cliente();
-                newCliente.nome = tb_nome.Text;
-                newCliente.morada = tb_morada.Text;
-                newCliente.numFiscal = tb_numFiscal.Text;
+                
                 using (var context = new CinemaContext())
                 {
+                    newCliente.nome = tb_nome.Text;
+                    newCliente.morada = tb_morada.Text;
+                    newCliente.numFiscal = tb_numFiscal.Text;
                     context.Clientes.Add(newCliente);
                     context.SaveChanges();
                 }

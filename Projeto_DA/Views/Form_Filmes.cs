@@ -48,9 +48,11 @@ namespace Projeto_DA.Views
         public void LoadFilmes()
         {
             listb_Filmes.DataSource = null;
+            
             using (var context = new CinemaContext())
             {
-                listb_Filmes.DataSource = context.Filmes.ToList();
+                var filmes = context.Filmes.Include("categoria").ToList();
+                listb_Filmes.DataSource = filmes;
             }
 
         }
@@ -76,7 +78,8 @@ namespace Projeto_DA.Views
                 {
                     newFilme.nome = tb_nomeFilme.Text;
                     newFilme.duracao = Convert.ToInt32(tb_duracao.Text);
-                    newFilme.Categoria = (Categoria)cb_categorias.SelectedItem;// erro categoria vem null
+                    //vai buscar a categoria
+                    newFilme.categoria = (Categoria)cb_categorias.SelectedItem;
                     newFilme.activoS = "Desativado";
                     context.Filmes.Add(newFilme);
                     context.SaveChanges();
@@ -89,6 +92,7 @@ namespace Projeto_DA.Views
             {
                 MessageBox.Show("Ocorreu um erro ao criar o filme: " + ex.Message);
             }
+            
         }
 
         private void btn_Eleminar_Click(object sender, EventArgs e)
@@ -124,34 +128,30 @@ namespace Projeto_DA.Views
             }
 
             Filme selectedFilme = (Filme)listb_Filmes.SelectedItem; // seleciona filme
-
-            using (var context = new CinemaContext())
-            {
-                Filme filme = context.Filmes.Find(selectedFilme.Id);
-
-                if (filme.activo)// muda de true para false e viceversa
+            try { 
+                using (var context = new CinemaContext())
                 {
-                    filme.activo = false;
+                    Filme filme = context.Filmes.Find(selectedFilme.Id);
+
+                    if (filme.activo)// muda de true para false e viceversa
+                    {
+                        filme.activo = false;
+                        filme.activoS = "Desativado";
+                    }
+                    else
+                    {
+                        filme.activo = true;
+                        filme.activoS = "Activado";
+                    } 
+                    context.SaveChanges();
                 }
-                else
-                {
-                    filme.activo = true;
-                } 
-
-                if (filme.activo)
-                {
-                    filme.activoS = "Activado";
-                }
-                else
-                {
-                    filme.activoS = "Desativado";
-                }
-                context.SaveChanges();
-
-            }
 
             LoadFilmes(); // Reload da lista
-
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro ao ativar ou desativar filme o filme: " + ex.Message);
+            }
         }
 
     }

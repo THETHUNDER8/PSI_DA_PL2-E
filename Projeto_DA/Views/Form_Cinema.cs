@@ -87,7 +87,7 @@ namespace Projeto_DA.Views
                     context.Salas.Add(newSala);
                     context.SaveChanges();
                 }
-
+                listb_salas.SelectedItem = null;
                 FormController.ClearInputFields(tb_nome, tb_fila, tb_coluna);
                 LoadSalas();
             }

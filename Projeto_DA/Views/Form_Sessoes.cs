@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,8 @@ namespace Projeto_DA.Views
         public Form_Sessoes()
         {
             InitializeComponent();
+
+
         }
 
         private void btn_back_Click(object sender, EventArgs e)
@@ -39,16 +42,31 @@ namespace Projeto_DA.Views
                 Sessao newSessao = new Sessao();
                 using (var context = new CinemaContext())
                 {
-                    newSessao.DataHora = Picker_dataHora.Value;
-                    newSessao.preco = float.Parse(tb_preco.Text);
-                    //escole filme
-                    Filme selectedFilme = (Filme)listb_filmes.SelectedItem;
-                    newSessao.Filme = selectedFilme;
-                    string selectedFilmeNome = selectedFilme.nome;
-                    //escolhe sala
+                    DateTime dataHora = Picker_dataHora.Value;
+
+                    
                     Sala selectedSala = (Sala)listb_salas.SelectedItem;
-                    newSessao.Sala = selectedSala;
-                    string selectedSalaNome = selectedSala.nome;
+                    bool sessionExists = context.Sessoes.Any(s => s.ID == selectedSala.Id && s.DataHora == dataHora);
+                    if (dataHora < DateTime.Now)
+                    {
+                        MessageBox.Show("A data e hora selecionadas devem ser posteriores à data e hora atual!");
+                        return;
+                    }
+                    if (sessionExists)
+                    {
+                        MessageBox.Show("Já existe uma sessão marcada para a mesma sala e hora selecionadas!");
+                        return;
+                    }
+
+                    //ToDo fazer a conta entreduração do filme e a hora para que so possa haver sessoes depis do filme acabar
+
+                    newSessao.DataHora = dataHora;
+                    newSessao.preco = float.Parse(tb_preco.Text);
+                    //busca filme
+                    newSessao.Filme = (Filme)listb_filmes.SelectedItem;
+                    //busca sala
+                    newSessao.Sala = (Sala)listb_salas.SelectedItem;
+
                     context.Sessoes.Add(newSessao);
                     context.SaveChanges();
                 }
@@ -100,11 +118,12 @@ namespace Projeto_DA.Views
             listb_filmes.DataSource = null;
             using (var context = new CinemaContext())
             {
-                var filmes = context.Filmes.Where(f => f.activo).ToList();//verifica se o estado do filme é true que significa
+                var filmes = context.Filmes.Where(f => f.activo).Include("categoria").ToList();//verifica se o estado do filme é true que significa
                                                                           //que o filme esta disponivel para eximição
                 listb_filmes.DataSource = filmes;
-            }
 
+
+            }
         }
 
         private void LoadSalas()
@@ -122,19 +141,23 @@ namespace Projeto_DA.Views
             listb_sessoes.DataSource = null;
             using (var context = new CinemaContext())
             {
-                listb_sessoes.DataSource = context.Sessoes.ToList();
+                var sessoes = context.Sessoes.Include("Filme").Include("Sala").ToList();
+                listb_sessoes.DataSource = sessoes;
 
             }
         }
 
         private void btn_bilhetes_Click(object sender, EventArgs e)
         {
-            if(listb_sessoes.SelectedItem == null)
+            if (listb_sessoes.SelectedItem == null)
             {
                 MessageBox.Show("Selecione uma sessao para comprar bilhetes");
+                return;
             }
-            Form_Principal Form_Atendimento = new Form_Principal();
-            FormController.trocaForm(this, Form_Atendimento);
+
+            Sessao selectedSessao = (Sessao)listb_sessoes.SelectedItem;
+            Form_Atendimento formAtendimento = new Form_Atendimento(selectedSessao);
+            FormController.trocaForm(this, formAtendimento);
         }
     }
 }

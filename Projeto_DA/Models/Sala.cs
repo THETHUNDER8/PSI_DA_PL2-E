@@ -13,10 +13,12 @@ namespace Projeto_DA.Models
         public int colunas { get; set; }
         public int filas { get; set; }
 
+        public ICollection<Sessao> Sessoes { get; set; }
+
         public Sala() 
         {
-        
-        
+            Sessoes = new List<Sessao>();
+
         }
         public override string ToString()
         {

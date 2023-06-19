@@ -24,3 +24,4 @@ C:\Users\Hugo Gonçalves\Desktop\New folder\Projetos\Programação C#\Projeto_DA
 C:\Users\Hugo Gonçalves\Desktop\New folder\Projetos\Programação C#\Projeto_DA\Projeto_DA\obj\Debug\Projeto_DA.Views.Form_Funcionarios.resources
 C:\Users\Hugo Gonçalves\Desktop\New folder\Projetos\Programação C#\Projeto_DA\Projeto_DA\obj\Debug\Projeto_DA.Views.Form_Sessoes.resources
 C:\Users\Hugo Gonçalves\Desktop\New folder\Projetos\Programação C#\Projeto_DA\Projeto_DA\obj\Debug\Projeto_DA.Views.Form_DefinicoesCinema.resources
+C:\Users\Hugo Gonçalves\Desktop\New folder\Projetos\Programação C#\Projeto_DA\Projeto_DA\obj\Debug\Projeto_DA.Views.Form_escolheCliente.resources

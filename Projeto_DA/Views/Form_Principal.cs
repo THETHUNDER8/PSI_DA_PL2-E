@@ -20,6 +20,11 @@ namespace Projeto_DA
             InitializeComponent();
         }
 
+        public Funcionario SelectedItem//permite vir buscar o funcionario selecionado
+        {
+            get { return (Funcionario)cb_funcionario.SelectedItem; }
+        }
+
         private  void bnt_cinema_Click(object sender, EventArgs e)
         {
 
@@ -82,9 +87,6 @@ namespace Projeto_DA
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Bilhete.exportar();
-        }
+
     }
 }
